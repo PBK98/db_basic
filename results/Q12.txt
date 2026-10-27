@@ -1,0 +1,16 @@
+-- Q12 | 서브쿼리: 전체 평균보다 조리 시간이 긴 요리를 찾습니다.
+SELECT name, cooking_minutes FROM recipe
+WHERE cooking_minutes > (SELECT AVG(cooking_minutes) FROM recipe)
+ORDER BY cooking_minutes DESC, recipe_id;
+name | cooking_minutes
+치킨커리 | 40
+돈카츠 | 35
+케밥 | 35
+불고기 | 30
+스테이크 | 30
+감자수프 | 30
+비빔밥 | 25
+오므라이스 | 25
+크림파스타 | 25
+팟타이 | 25
+결과: 10행

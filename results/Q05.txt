@@ -1,0 +1,26 @@
+-- Q05 | INNER JOIN: 요리 이름 옆에 분류 이름을 표시합니다.
+SELECT r.name AS recipe_name, c.name AS cuisine_name
+FROM recipe AS r INNER JOIN cuisine AS c ON r.cuisine_id = c.cuisine_id
+ORDER BY r.recipe_id;
+recipe_name | cuisine_name
+김치볶음밥 | 한식
+불고기 | 한식
+비빔밥 | 한식
+된장찌개 | 한식
+오므라이스 | 일식
+규동 | 일식
+미소된장국 | 일식
+돈카츠 | 일식
+토마토파스타 | 양식
+크림파스타 | 양식
+스테이크 | 양식
+감자수프 | 양식
+마파두부 | 중식
+토마토달걀볶음 | 중식
+팟타이 | 태국식
+월남쌈 | 베트남식
+치킨커리 | 인도식
+타코 | 멕시코식
+케밥 | 튀르키예식
+그리스샐러드 | 그리스식
+결과: 20행

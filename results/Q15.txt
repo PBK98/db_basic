@@ -1,0 +1,11 @@
+-- Q15 | 인덱스: 특정 회원의 리뷰를 찾거나 조인할 때 검색을 돕습니다.
+-- 기존 UNIQUE(recipe_id, member_id)는 recipe_id 검색도 지원하므로,
+-- 중복 인덱스 대신 회원별 리뷰 조회에 필요한 member_id에 만듭니다.
+CREATE INDEX IF NOT EXISTS idx_review_member_id ON review(member_id);
+실행 완료
+
+-- SQLite 전용: 인덱스가 실제 검색 계획에 나타나는지 확인합니다.
+EXPLAIN QUERY PLAN SELECT * FROM review WHERE member_id = 1;
+id | parent | notused | detail
+3 | 0 | 61 | SEARCH review USING INDEX idx_review_member_id (member_id=?)
+결과: 1행

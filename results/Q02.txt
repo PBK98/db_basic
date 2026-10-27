@@ -1,0 +1,15 @@
+-- Q02 | 기본 조회: 20분 이내에 만들 수 있는 요리를 찾습니다.
+SELECT name, cooking_minutes FROM recipe
+WHERE cooking_minutes <= 20 ORDER BY cooking_minutes, recipe_id;
+name | cooking_minutes
+미소된장국 | 10
+토마토달걀볶음 | 10
+그리스샐러드 | 10
+김치볶음밥 | 15
+된장찌개 | 20
+규동 | 20
+토마토파스타 | 20
+마파두부 | 20
+월남쌈 | 20
+타코 | 20
+결과: 10행

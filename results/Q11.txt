@@ -1,0 +1,17 @@
+-- Q11 | 집계: 분류별 평균 조리 시간과 조리 시간 합계를 구합니다.
+SELECT c.name, ROUND(AVG(r.cooking_minutes), 2) AS average_minutes,
+       SUM(r.cooking_minutes) AS total_minutes
+FROM cuisine AS c INNER JOIN recipe AS r ON c.cuisine_id = r.cuisine_id
+GROUP BY c.cuisine_id, c.name ORDER BY c.cuisine_id;
+name | average_minutes | total_minutes
+한식 | 22.5 | 90
+일식 | 22.5 | 90
+양식 | 26.25 | 105
+중식 | 15.0 | 30
+태국식 | 25.0 | 25
+베트남식 | 20.0 | 20
+인도식 | 40.0 | 40
+멕시코식 | 20.0 | 20
+튀르키예식 | 35.0 | 35
+그리스식 | 10.0 | 10
+결과: 10행

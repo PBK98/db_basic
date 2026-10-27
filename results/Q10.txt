@@ -1,0 +1,28 @@
+-- Q10 | 집계: 요리별 리뷰 수와 평균 평점을 구합니다.
+SELECT r.name, COUNT(v.review_id) AS review_count,
+       ROUND(AVG(v.rating), 2) AS average_rating
+FROM recipe AS r LEFT JOIN review AS v ON r.recipe_id = v.recipe_id
+GROUP BY r.recipe_id, r.name
+ORDER BY average_rating DESC, r.recipe_id;
+name | review_count | average_rating
+불고기 | 1 | 5.0
+규동 | 1 | 5.0
+감자수프 | 1 | 5.0
+토마토달걀볶음 | 1 | 5.0
+월남쌈 | 1 | 5.0
+김치볶음밥 | 2 | 4.5
+토마토파스타 | 2 | 4.5
+비빔밥 | 1 | 4.0
+된장찌개 | 1 | 4.0
+미소된장국 | 1 | 4.0
+돈카츠 | 1 | 4.0
+스테이크 | 1 | 4.0
+마파두부 | 1 | 4.0
+팟타이 | 1 | 4.0
+치킨커리 | 1 | 4.0
+타코 | 1 | 4.0
+오므라이스 | 1 | 3.0
+크림파스타 | 1 | 3.0
+케밥 | 0 | NULL
+그리스샐러드 | 0 | NULL
+결과: 20행

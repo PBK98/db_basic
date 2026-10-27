@@ -1,0 +1,7 @@
+-- Q08 | LEFT JOIN: 리뷰를 한 번도 쓰지 않은 회원을 찾습니다.
+SELECT m.member_id, m.nickname
+FROM member AS m LEFT JOIN review AS v ON m.member_id = v.member_id
+WHERE v.review_id IS NULL ORDER BY m.member_id;
+member_id | nickname
+10 | 새내기
+결과: 1행

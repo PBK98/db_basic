@@ -1,0 +1,19 @@
+-- Q14 | DELETE: 20번 리뷰를 삭제하고 남은 리뷰 개수를 확인합니다.
+BEGIN TRANSACTION;
+실행 완료
+
+DELETE FROM review WHERE review_id = 20;
+변경: 1행
+
+SELECT COUNT(*) AS remaining_reviews FROM review;
+remaining_reviews
+19
+결과: 1행
+
+SELECT COUNT(*) AS deleted_review_count FROM review WHERE review_id = 20;
+deleted_review_count
+0
+결과: 1행
+
+ROLLBACK;
+실행 완료

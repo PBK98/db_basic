@@ -1,0 +1,16 @@
+-- Q09 | 집계: 분류별 요리 개수를 셉니다.
+SELECT c.name, COUNT(r.recipe_id) AS recipe_count
+FROM cuisine AS c LEFT JOIN recipe AS r ON c.cuisine_id = r.cuisine_id
+GROUP BY c.cuisine_id, c.name ORDER BY c.cuisine_id;
+name | recipe_count
+한식 | 4
+일식 | 4
+양식 | 4
+중식 | 2
+태국식 | 1
+베트남식 | 1
+인도식 | 1
+멕시코식 | 1
+튀르키예식 | 1
+그리스식 | 1
+결과: 10행
