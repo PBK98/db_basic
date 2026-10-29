@@ -64,6 +64,7 @@ WHERE cooking_minutes > (SELECT AVG(cooking_minutes) FROM recipe)
 ORDER BY cooking_minutes DESC, recipe_id;
 
 -- Q13 | UPDATE: 김치볶음밥의 조리 시간을 15분에서 18분으로 바꿉니다.
+COMMIT;
 BEGIN TRANSACTION;
 UPDATE recipe SET cooking_minutes = 18 WHERE recipe_id = 1;
 SELECT recipe_id, name, cooking_minutes FROM recipe WHERE recipe_id = 1;
