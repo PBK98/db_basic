@@ -1,7 +1,7 @@
 -- Q04 | 기본 조회: 이름에 파스타가 들어간 요리를 검색합니다.
-SELECT name, main_ingredient FROM recipe
+SELECT name, cooking_minutes FROM recipe
 WHERE name LIKE '%파스타%' ORDER BY recipe_id;
-name | main_ingredient
-토마토파스타 | 토마토
-크림파스타 | 생크림
+name | cooking_minutes
+토마토파스타 | 20
+크림파스타 | 25
 결과: 2행
