@@ -73,10 +73,39 @@ SELECT * FROM recipe;
 
 ```mermaid
 erDiagram
-    cuisine ||--o{ recipe : "recipe.cuisine_id → cuisine.cuisine_id"
-    recipe ||--o{ review : "review.recipe_id → recipe.recipe_id"
-    member ||--o{ review : "review.member_id → member.member_id"
+    cuisine ||--o{ recipe : "cuisine_id로 연결"
+    recipe ||--o{ review : "recipe_id로 연결"
+    member ||--o{ review : "member_id로 연결"
+
+    cuisine {
+        INTEGER cuisine_id PK "분류 번호"
+        TEXT name UK "분류 이름"
+    }
+
+    recipe {
+        INTEGER recipe_id PK "요리 번호"
+        INTEGER cuisine_id FK "cuisine.cuisine_id 참조"
+        TEXT name "요리 이름"
+        INTEGER cooking_minutes "조리 시간(분)"
+    }
+
+    member {
+        INTEGER member_id PK "회원 번호"
+        TEXT nickname UK "닉네임"
+    }
+
+    review {
+        INTEGER review_id PK "리뷰 번호"
+        INTEGER recipe_id FK "recipe.recipe_id 참조"
+        INTEGER member_id FK "member.member_id 참조"
+        INTEGER rating "평점(1~5)"
+        TEXT comment "후기"
+    }
 ```
+
+`PK`는 기본 키, `FK`는 외래 키, `UK`는 UNIQUE 조건입니다. 모든 컬럼은 값을 가져야 합니다. 기본 키는 INTEGER PRIMARY KEY로 지정했고, 나머지 컬럼에는 NOT NULL을 적용했습니다.
+
+관계선의 `||`는 정확히 하나, `o{`는 0개 이상을 뜻합니다. 예를 들어 요리는 반드시 분류 하나에 속하지만, 분류에는 아직 요리가 없을 수도 있고 여러 개가 있을 수도 있습니다. 리뷰도 반드시 요리 하나와 회원 한 명을 참조하며, 요리나 회원에 리뷰가 없어도 됩니다.
 
 예를 들어 `cuisine`의 1번은 한식입니다. `recipe`의 김치볶음밥은 `cuisine_id = 1`을 저장하여 한식을 가리킵니다. `review`는 요리 번호와 회원 번호를 함께 저장하여 누가 어떤 요리를 평가했는지 연결합니다.
 
