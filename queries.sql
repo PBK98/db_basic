@@ -9,13 +9,13 @@ SELECT recipe_id, name, cooking_minutes FROM recipe ORDER BY recipe_id;
 SELECT name, cooking_minutes FROM recipe
 WHERE cooking_minutes <= 20 ORDER BY cooking_minutes, recipe_id;
 
--- Q03 | 기본 조회: 쉬운 요리 중 조리 시간이 짧은 5개를 찾습니다.
+-- Q03 | 기본 조회: 20분 이내 요리 중 조리 시간이 짧은 5개를 찾습니다.
 -- LIMIT는 SQLite에서 지원하는 행 수 제한 문법입니다.
-SELECT name, difficulty, cooking_minutes FROM recipe
-WHERE difficulty = '쉬움' ORDER BY cooking_minutes, recipe_id LIMIT 5;
+SELECT name, cooking_minutes FROM recipe
+WHERE cooking_minutes <= 20 ORDER BY cooking_minutes, recipe_id LIMIT 5;
 
 -- Q04 | 기본 조회: 이름에 파스타가 들어간 요리를 검색합니다.
-SELECT name, main_ingredient FROM recipe
+SELECT name, cooking_minutes FROM recipe
 WHERE name LIKE '%파스타%' ORDER BY recipe_id;
 
 -- Q05 | INNER JOIN: 요리 이름 옆에 분류 이름을 표시합니다.
@@ -77,8 +77,7 @@ SELECT COUNT(*) AS deleted_review_count FROM review WHERE review_id = 20;
 ROLLBACK;
 
 -- Q15 | 인덱스: 특정 회원의 리뷰를 찾거나 조인할 때 검색을 돕습니다.
--- 기존 UNIQUE(recipe_id, member_id)는 recipe_id 검색도 지원하므로,
--- 중복 인덱스 대신 회원별 리뷰 조회에 필요한 member_id에 만듭니다.
+-- 회원별 리뷰 조회에 사용하는 member_id에 인덱스를 만듭니다.
 CREATE INDEX IF NOT EXISTS idx_review_member_id ON review(member_id);
 -- SQLite 전용: 인덱스가 실제 검색 계획에 나타나는지 확인합니다.
 EXPLAIN QUERY PLAN SELECT * FROM review WHERE member_id = 1;
