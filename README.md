@@ -73,9 +73,9 @@ SELECT * FROM recipe;
 
 ```mermaid
 erDiagram
-    cuisine ||--o{ recipe : "분류에 속한 요리"
-    recipe ||--o{ review : "요리에 달린 리뷰"
-    member ||--o{ review : "회원이 작성한 리뷰"
+    cuisine ||--o{ recipe : "recipe.cuisine_id → cuisine.cuisine_id"
+    recipe ||--o{ review : "review.recipe_id → recipe.recipe_id"
+    member ||--o{ review : "review.member_id → member.member_id"
 ```
 
 예를 들어 `cuisine`의 1번은 한식입니다. `recipe`의 김치볶음밥은 `cuisine_id = 1`을 저장하여 한식을 가리킵니다. `review`는 요리 번호와 회원 번호를 함께 저장하여 누가 어떤 요리를 평가했는지 연결합니다.
