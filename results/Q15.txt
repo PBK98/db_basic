@@ -1,6 +1,5 @@
 -- Q15 | 인덱스: 특정 회원의 리뷰를 찾거나 조인할 때 검색을 돕습니다.
--- 기존 UNIQUE(recipe_id, member_id)는 recipe_id 검색도 지원하므로,
--- 중복 인덱스 대신 회원별 리뷰 조회에 필요한 member_id에 만듭니다.
+-- 회원별 리뷰 조회에 사용하는 member_id에 인덱스를 만듭니다.
 CREATE INDEX IF NOT EXISTS idx_review_member_id ON review(member_id);
 실행 완료
 
