@@ -62,10 +62,10 @@ def main():
 
         # 실패해야 정상인 입력을 각각 시도합니다. 실패한 문장은 저장되지 않습니다.
         invalid_inputs = [
-            ("없는 요리 참조", "INSERT INTO review VALUES (99, 999, 1, 5, 'FK 실습', '2026-10-28')"),
-            ("닉네임 중복", "INSERT INTO member VALUES (99, '밥사랑', 'other@example.com')"),
-            ("필수 이름 누락", "INSERT INTO cuisine VALUES (99, NULL, '테스트')"),
-            ("평점 범위 위반", "INSERT INTO review VALUES (99, 20, 1, 6, '평점 실습', '2026-10-28')"),
+            ("없는 요리 참조", "INSERT INTO review VALUES (99, 999, 1, 5, 'FK 실습')"),
+            ("닉네임 중복", "INSERT INTO member VALUES (99, '밥사랑')"),
+            ("필수 이름 누락", "INSERT INTO cuisine VALUES (99, NULL)"),
+            ("평점 범위 위반", "INSERT INTO review VALUES (99, 20, 1, 6, '평점 실습')"),
         ]
         for label, sql in invalid_inputs:
             try:
