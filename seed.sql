@@ -1,6 +1,5 @@
 -- 분류와 회원을 먼저 넣고, 요리와 리뷰를 넣습니다.
 PRAGMA foreign_keys = ON;
-COMMIT;
 BEGIN TRANSACTION;
 
 INSERT INTO cuisine (cuisine_id, name) VALUES
